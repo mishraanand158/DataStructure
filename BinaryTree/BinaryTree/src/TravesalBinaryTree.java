@@ -1,37 +1,11 @@
-package BinaryTree.coding;
+package BinaryTree.coding.BinaryTree.src;
 
 import java.util.Stack;
 
 public class TravesalBinaryTree {
 
-    public static class Node {
-
-        int data;
-        Node left;
-        Node right;
-
-        Node(int data, Node left, Node right) {
-            this.data = data;
-            this.left = left;
-            this.right = right;
-        }
-
-    }
-
-
-    public static class Pair {
-        Node node;
-        int state;
-
-        Pair(Node node, int state) {
-            this.node = node;
-            this.state = state;
-        }
-    }
-
     public static void inorder(Node node) {
-        if (node == null)
-            return;
+        if (node == null) return;
         inorder(node.left);
         System.out.println(node.data);
         inorder(node.right);
@@ -82,8 +56,32 @@ public class TravesalBinaryTree {
         }
 
 
-        inorder (root);
+        inorder(root);
 
+    }
+
+    public static class Node {
+
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data, Node left, Node right) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+
+    }
+
+    public static class Pair {
+        Node node;
+        int state;
+
+        Pair(Node node, int state) {
+            this.node = node;
+            this.state = state;
+        }
     }
 
 }

@@ -1,44 +1,8 @@
-package BinaryTree.coding;
+package BinaryTree.coding.BinaryTree.src;
 
 import java.util.Stack;
 
 public class BinaryTree {
-
-    public static class Node {
-
-        int data;
-        Node left;
-        Node right;
-
-        Node(int data, Node left, Node right) {
-            this.data = data;
-            this.left = left;
-            this.right = right;
-        }
-
-    }
-/**
- *  // initial stack is empty so push on it add Node and state = 1.
- *  1 means next node will on the left side of the current node
- *  2 means next node will on the right side of the current node
- *  3 pop the node from the stack  
- *
- */
-
-    /**
-     * Algo -> push then increase the state of pushed Node
-     * if top stack value one then push that node right side of the top Node
-     * if node is null then only increase the value of the top node
-     */
-    public static class Pair {
-        Node node;
-        int state;
-
-        Pair(Node node, int state) {
-            this.node = node;
-            this.state = state;
-        }
-    }
 
     public static void display(Node node) {
 
@@ -56,6 +20,12 @@ public class BinaryTree {
 
     }
 
+    /**
+     * // initial stack is empty so push on it add Node and state = 1.
+     * 1 means next node will on the left side of the current node
+     * 2 means next node will on the right side of the current node
+     * 3 pop the node from the stack
+     */
 
     public static void main(String[] args) {
 
@@ -102,6 +72,35 @@ public class BinaryTree {
             }
         }
         display(root);
+    }
+
+    public static class Node {
+
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data, Node left, Node right) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+
+    }
+
+    /**
+     * Algo -> push then increase the state of pushed Node
+     * if top stack value one then push that node right side of the top Node
+     * if node is null then only increase the value of the top node
+     */
+    public static class Pair {
+        Node node;
+        int state;
+
+        Pair(Node node, int state) {
+            this.node = node;
+            this.state = state;
+        }
     }
 
 

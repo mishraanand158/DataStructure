@@ -1,60 +1,8 @@
-package BinaryTree.coding;
+package BinaryTree.coding.BinaryTree.src;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.Stack;
 
-public class LevelOrder {
-
-    public static class Node {
-
-        int data;
-        Node left;
-        Node right;
-
-        Node(int data, Node left, Node right) {
-            this.data = data;
-            this.left = left;
-            this.right = right;
-        }
-
-    }
-
-
-    public static class Pair {
-        Node node;
-        int state;
-
-        Pair(Node node, int state) {
-            this.node = node;
-            this.state = state;
-        }
-    }
-
-    public static void levelOrder(Node root){
-
-        Queue<Node> mq = new ArrayDeque<>();
-       mq.add(root);
-
-        while (mq.size()>0)
-        {
-            int count= mq.size();
-            for(int i=0;i<count ; i++)
-            {
-                root = mq.remove();
-                System.out.println(root.data);
-
-                if(root.left!=null){
-                    mq.add(root.left);
-                }
-                if(root.right!=null)
-                    mq.add(root.right);
-            }
-            System.out.println();
-
-        }
-
-    }
+public class NodeToRootPath {
 
     public static void main(String[] args) {
 
@@ -99,8 +47,31 @@ public class LevelOrder {
                 st.pop();
             }
         }
-            //Methods
-        levelOrder(root);
+        //Methods
+    }
+
+    public static class Node {
+
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data, Node left, Node right) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+
+    }
+
+    public static class Pair {
+        Node node;
+        int state;
+
+        Pair(Node node, int state) {
+            this.node = node;
+            this.state = state;
+        }
     }
 
 }
