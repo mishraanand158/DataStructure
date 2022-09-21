@@ -1,19 +1,10 @@
-package BinaryTree.coding.BinaryTree.src;
-
 import java.util.Stack;
 
-public class TravesalBinaryTree {
-
-    public static void inorder(Node node) {
-        if (node == null) return;
-        inorder(node.left);
-        System.out.println(node.data);
-        inorder(node.right);
-    }
+public class NodeToRootPath {
 
     public static void main(String[] args) {
 
-        Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr = {50, 12, 25, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtr = new Pair(root, 1);
@@ -54,10 +45,7 @@ public class TravesalBinaryTree {
                 st.pop();
             }
         }
-
-
-        inorder(root);
-
+        //Methods
     }
 
     public static class Node {
@@ -85,4 +73,3 @@ public class TravesalBinaryTree {
     }
 
 }
-

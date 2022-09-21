@@ -1,44 +1,33 @@
-package BinaryTree.coding.BinaryTree.src;
-
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Stack;
 
-public class HeightBinaryTree {
+public class LevelOrder {
 
-    public static void display(Node node) {
+    public static void levelOrder(Node root) {
 
-        if (node == null) return;
+        Queue<Node> mq = new ArrayDeque<>();
+        mq.add(root);
 
-        String str = "";
-        str += node.left == null ? "." : node.left.data + "";
-        str += "<-" + node.data + "->";
-        str += node.right == null ? "." : node.right.data + "";
+        while (mq.size() > 0) {
+            int count = mq.size();
+            for (int i = 0; i < count; i++) {
+                root = mq.remove();
+                System.out.println(root.data);
 
-        System.out.println(str);
+                if (root.left != null) {
+                    mq.add(root.left);
+                }
+                if (root.right != null) mq.add(root.right);
+            }
+            System.out.println();
 
-        display(node.left);
-        display(node.right);
+        }
 
-    }
-
-    /**
-     * // initial stack is empty so push on it add Node and state = 1.
-     * 1 means next node will on the left side of the current node
-     * 2 means next node will on the right side of the current node
-     * 3 pop the node from the stack
-     */
-
-    public static int height(Node node) {
-
-        if (node == null) return 0;
-        int left = height(node.left);
-        int right = height(node.right);
-
-        return Math.max(left, right) + 1;
     }
 
     public static void main(String[] args) {
 
-        //Integer taking because we want to insert null as a value in the array , So object is required for this .
         Integer[] arr = {50, 12, 25, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         Node root = new Node(arr[0], null, null);
@@ -46,7 +35,7 @@ public class HeightBinaryTree {
         Stack<Pair> st = new Stack<>();
         st.push(rtr);
 
-        int idx = 0; // creating to read the arrayIndex
+        int idx = 0;
 
         while (st.size() > 0) {
             Pair top = st.peek();
@@ -80,8 +69,8 @@ public class HeightBinaryTree {
                 st.pop();
             }
         }
-        display(root);
-        System.out.println(height(root));
+        //Methods
+        levelOrder(root);
     }
 
     public static class Node {
@@ -98,11 +87,6 @@ public class HeightBinaryTree {
 
     }
 
-    /**
-     * Algo -> push then increase the state of pushed Node
-     * if top stack value one then push that node right side of the top Node
-     * if node is null then only increase the value of the top node
-     */
     public static class Pair {
         Node node;
         int state;
@@ -112,6 +96,5 @@ public class HeightBinaryTree {
             this.state = state;
         }
     }
-
 
 }

@@ -1,36 +1,17 @@
-package BinaryTree.coding.BinaryTree.src;
-
-import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.Stack;
 
-public class LevelOrder {
+public class TravesalBinaryTree {
 
-    public static void levelOrder(Node root) {
-
-        Queue<Node> mq = new ArrayDeque<>();
-        mq.add(root);
-
-        while (mq.size() > 0) {
-            int count = mq.size();
-            for (int i = 0; i < count; i++) {
-                root = mq.remove();
-                System.out.println(root.data);
-
-                if (root.left != null) {
-                    mq.add(root.left);
-                }
-                if (root.right != null) mq.add(root.right);
-            }
-            System.out.println();
-
-        }
-
+    public static void inorder(Node node) {
+        if (node == null) return;
+        inorder(node.left);
+        System.out.println(node.data);
+        inorder(node.right);
     }
 
     public static void main(String[] args) {
 
-        Integer[] arr = {50, 12, 25, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtr = new Pair(root, 1);
@@ -71,8 +52,10 @@ public class LevelOrder {
                 st.pop();
             }
         }
-        //Methods
-        levelOrder(root);
+
+
+        inorder(root);
+
     }
 
     public static class Node {
@@ -100,3 +83,4 @@ public class LevelOrder {
     }
 
 }
+
