@@ -27,22 +27,17 @@ public class kthSmallest {
 class Solution {
     public static int kthSmallest(int[] arr, int l, int r, int k) {
         //default priorityQueue is  min priorityQueue
-        PriorityQueue<Integer> maxHeap = new PriorityQueue(k, Collections.reverseOrder());
+        PriorityQueue<Integer> maxHeap = new PriorityQueue(k + 1, Collections.reverseOrder());
 
-        for (int i = l; i < k; i++)
+        for (int i = l; i <= r; i++) {
             maxHeap.add(arr[i]);  //0 1 2 3 k =3
-
-        int j = k;
-        for (; j <= r; j++) {
-            int peekValue = maxHeap.peek();
-
-            if (arr[j] < peekValue) {
+            if (maxHeap.size() > k)
                 maxHeap.poll();
-                maxHeap.add(arr[j]);
-            }
         }
+
         return maxHeap.peek();
     }
+
 }
 
 
