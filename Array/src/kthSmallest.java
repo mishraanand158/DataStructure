@@ -38,7 +38,7 @@ class Solution {
 
             if (arr[j] < peekValue) {
                 maxHeap.poll();
-                maxHeap.add(arr[k]);
+                maxHeap.add(arr[j]);
             }
         }
         return maxHeap.peek();
