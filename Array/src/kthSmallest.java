@@ -1,5 +1,4 @@
 import java.io.PrintWriter;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
@@ -24,30 +23,36 @@ public class kthSmallest {
         out.flush();
     }
 }
-
 class Solution {
     public static int kthSmallest(int[] arr, int l, int r, int k) {
         //default priorityQueue is  min priorityQueue
         PriorityQueue<Integer> maxHeap = new PriorityQueue(new CustomComparator());
-
         for (int i = l; i <= r; i++) {
             maxHeap.add(arr[i]);  //0 1 2 3 k =3
             if (maxHeap.size() > k)
                 maxHeap.poll();
         }
-
         return maxHeap.peek();
     }
-
 }
+/*
+        Notes for Comparator Concept  : 7 10 4 20 15
+        1.  heap.add(7)         ->   element 7 will add {no comparison required for 1st element }
+        2.head.add(10)   ->  (10,7) {after 7 or before 7 you want to add }   let  suppose for max heap means (max will be top)
+                            humesha top element ke according dekhna hai phle yaa baad mein ...
+                            max wale mein 10 ko 7 ke phle hona hai [10 7 .....like wise max Heap ]
+                          Standard:  before means negative
+                                     after means Positive
+           so heap.add(10) ===  -ve (10,7)    now write compare method (o1,o2)    ->o1-o2  ka result =10-7 = +ve but
+                                                            we need -vegaive so  (from o1-o2) (to -{o1-o2})
+                                                            change method (01,o2) -=>   -(o1-o2)
 
+
+ */
 class CustomComparator implements Comparator<Integer> {
-    @Override
+    @Override                                                    //   7 10 4 20 15
     public int compare(Integer o1, Integer o2) {
-        return -(o1 - o2);   //making false if current value is
-        // in 2nd loop  # o1 will be 10 and o2 will be 7 res = -3
-        //              #o1 =4 and o2 :10 res = 6 positive
-        // o1:20 and o2:7   and then , ## o1 : 20 and o2 : 10 ##
+        return -(o1 - o2);
     }
 }
 
