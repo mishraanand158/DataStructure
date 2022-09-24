@@ -8,11 +8,9 @@ public class kthSmallest {
         Scanner sc = new Scanner(System.in);
         PrintWriter out = new PrintWriter(System.out);
         int t = sc.nextInt();
-
         while (t-- > 0) {
             int n = sc.nextInt(); //N = 5
             int arr[] = new int[n]; //arr[] = 7 10 4 20 15      10 , 7,4     20>10 leave , 10 ,7 ,4 then 15>peek leave
-
             for (int i = 0; i < n; i++)
                 arr[i] = sc.nextInt();
 
@@ -35,7 +33,8 @@ class Solution {
         return maxHeap.peek();
     }
 }
-/*
+
+        /*
         Notes for Comparator Concept  : 7 10 4 20 15
         1.  heap.add(7)         ->   element 7 will add {no comparison required for 1st element }
         2.head.add(10)   ->  (10,7) {after 7 or before 7 you want to add }   let  suppose for max heap means (max will be top)
@@ -46,13 +45,11 @@ class Solution {
            so heap.add(10) ===  -ve (10,7)    now write compare method (o1,o2)    ->o1-o2  ka result =10-7 = +ve but
                                                             we need -vegaive so  (from o1-o2) (to -{o1-o2})
                                                             change method (01,o2) -=>   -(o1-o2)
+        */
 
-
- */
 class CustomComparator implements Comparator<Integer> {
     @Override                                                    //   7 10 4 20 15
     public int compare(Integer o1, Integer o2) {
         return -(o1 - o2);
     }
 }
-
