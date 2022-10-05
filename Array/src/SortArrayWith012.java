@@ -34,7 +34,6 @@ class Solution1 {
             if (map.containsKey(value)) map.put(value, map.get(value) + 1);
             else map.put(value, 1);
         }
-
         int zero = map.get(0);
         int one = map.get(1);
         int two = map.get(2);
