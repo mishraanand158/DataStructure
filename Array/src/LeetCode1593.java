@@ -1,7 +1,9 @@
 import com.sun.source.tree.WhileLoopTree;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class LeetCode1593 {
     /**
@@ -15,28 +17,30 @@ public class LeetCode1593 {
     public static void main(String[] args) {
         Solution s1 = new Solution();
         String s = "wwwzfvedwfvhsww";
-        s1.maxUniqueSplit(s);
+        System.out.println(s1.maxUniqueSplit(s));
+        //s1.maxUniqueSplit(s);
 
 
     }
 
     static class Solution {
         public int maxUniqueSplit(String s) {   //wwwzfvedwfvhsww  ans 11 : w,ww,z,f,v,e,d,wf,vh,s
+            return helper(s, new HashSet<>());
 
-            Map<String, Integer> map = new HashMap<>();
-            String str = "";
+        }
 
-            for (int i = 0; i < s.length(); i++) {
+        private int helper(String str, Set<String> set) {
+            int max = 0;
+            for (int i = 1; i <= str.length(); i++) {
+                String candidate = str.substring(0, i);//aabcd   a , abcd
 
-                str += s.substring(i, i + 1);
-                if (!map.containsKey(str)) {
-                    map.put(str, i);
-                    str = "";
+                if (!set.contains(candidate)) {
+                    set.add(candidate);
+                    max = Math.max(max, 1 + helper(str.substring(i), set));
+                    set.remove(candidate);
                 }
-
             }
-
-            return map.size();
+            return max;
         }
     }
 }
