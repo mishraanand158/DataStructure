@@ -1,8 +1,4 @@
-import com.sun.source.tree.WhileLoopTree;
-
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class LeetCode1593 {
@@ -24,7 +20,7 @@ public class LeetCode1593 {
     }
 
     static class Solution {
-        public int maxUniqueSplit(String s) {   //wwwzfvedwfvhsww  ans 11 : w,ww,z,f,v,e,d,wf,vh,s
+        public int maxUniqueSplit(String s) {   //www zfvedwfvhs ww  ans 11 : w,ww,z,f,v,e,d,wf,vh,s
             return helper(s, new HashSet<>());
 
         }
