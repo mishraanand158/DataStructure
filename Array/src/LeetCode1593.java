@@ -1,3 +1,8 @@
+import com.sun.source.tree.WhileLoopTree;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class LeetCode1593 {
     /**
      * Given a string s, return the maximum number of unique substrings that the given string can be split into.
@@ -9,15 +14,29 @@ public class LeetCode1593 {
      */
     public static void main(String[] args) {
         Solution s1 = new Solution();
-        String s = "ababccc";
+        String s = "wwwzfvedwfvhsww";
         s1.maxUniqueSplit(s);
 
 
     }
 
     static class Solution {
-        public int maxUniqueSplit(String s) {
-            return 0;
+        public int maxUniqueSplit(String s) {   //wwwzfvedwfvhsww  ans 11 : w,ww,z,f,v,e,d,wf,vh,s
+
+            Map<String, Integer> map = new HashMap<>();
+            String str = "";
+
+            for (int i = 0; i < s.length(); i++) {
+
+                str += s.substring(i, i + 1);
+                if (!map.containsKey(str)) {
+                    map.put(str, i);
+                    str = "";
+                }
+
+            }
+
+            return map.size();
         }
     }
 }
