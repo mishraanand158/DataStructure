@@ -22,9 +22,9 @@ public class LeetCode1599 {
      **/
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] customers = {3, 4, 0, 5, 1};
-        int boardingCost = 1;
-        int runningCost = 92;
+        int[] customers = {10, 10, 6, 4, 7};
+        int boardingCost = 3;
+        int runningCost = 8;
 
         solution.minOperationsMaxProfit(customers, boardingCost, runningCost);
     }
@@ -33,45 +33,32 @@ public class LeetCode1599 {
         public int minOperationsMaxProfit(int[] customers, int boardingCost, int runningCost) {
 
             int wait = 0;
-            int profit = 0;
+            int currentProfit = 0;
+
+            int maxProfit = Integer.MIN_VALUE;
+            int round = 0;
             int total = 0;
-            int i = 1;
 
-            for (int customer : customers) {
+            for (int j = 1; j <= customers.length || wait > 0; j++) {
 
-
-                if (customer > 4 || wait + customer > 4) {
-                    total = total + 4;
-                } else {
-                    total += customer;
-                    total = total + wait;
-                }
-                profit = total * boardingCost - i * runningCost;
-                wait = wait + customer - 4;
-                if (wait < 0)
-                    wait = 0;
-                i++;
-            }
-
-
-            while (wait > 0) {
+                wait = wait + ((j - 1 < customers.length) ? customers[j - 1] : 0);
                 if (wait >= 4) {
-                    total = total + 4;
-                    wait = wait - 4;
-                    profit = total * boardingCost - i * runningCost;
-                    i++;
+                    total += 4;
+                    wait -= 4;
                 } else {
                     total = total + wait;
-                    profit = total * boardingCost - i * runningCost;
-                    wait = wait - 4;
-                    i++;
+                    wait = 0;
+                }
+                currentProfit = total * boardingCost - j * runningCost;
+                if (currentProfit > maxProfit) {
+                    maxProfit = currentProfit;
+                    round = j;
                 }
 
             }
-            if (profit > 0)
-                return i - 1;
-            else
-                return -1;
+
+            if (maxProfit > 0) return round;
+            else return -1;
         }
 
     }
