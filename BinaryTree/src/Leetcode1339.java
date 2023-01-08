@@ -41,34 +41,39 @@ public class Leetcode1339 {
 
     static class Solution {
 
-        int ans = 0;
-        int total = 0;
+        long ans = 0;
+        long total = 0;
+        long mod = 1000000007l;
 
         public int maxProduct(TreeNode root) {
             total = totalHelper(root);
             maxProductSum(root);
-            System.out.println(ans);
-            return ans;
+            long pans = 6043763521071l;
+
+            ans = ans % mod;
+            int val = (int) ans;
+
+            return val;
         }
 
-        private int maxProductSum(TreeNode root) {
+        private long maxProductSum(TreeNode root) {
             if (root == null)
                 return 0;
 
-            int left = maxProductSum(root.left);
-            int right = maxProductSum(root.right);
-            int upperPart = total - (left + right + root.val);
+            long left = maxProductSum(root.left);
+            long right = maxProductSum(root.right);
+            long upperPart = total - (left + right + root.val);
 
-            int option1 = upperPart * (left + right + root.val);
-            int option2 = left * (upperPart + right + root.val);
-            int option3 = right * (upperPart + left + root.val);
+            long option1 = upperPart * (left + right + root.val);
+            long option2 = left * (upperPart + right + root.val);
+            long option3 = right * (upperPart + left + root.val);
 
             ans = Math.max(ans, Math.max(option1, Math.max(option2, option3)));
 
             return root.val + left + right;
         }
 
-        private int totalHelper(TreeNode root) {
+        private long totalHelper(TreeNode root) {
 
             if (root == null)
                 return 0;
