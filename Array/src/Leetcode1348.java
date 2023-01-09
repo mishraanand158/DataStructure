@@ -80,7 +80,7 @@ public class Leetcode1348 {
 
             tweetList.add(count);
             start_time = end_time + 1;
-            end_time = Math.min(start_time + duration + 1, end_time);
+            end_time = Math.min(end_time + duration , endTime);
 
         }
 
