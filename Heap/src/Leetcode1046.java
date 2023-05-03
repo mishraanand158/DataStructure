@@ -36,8 +36,11 @@ public class Leetcode1046 {
 
 
                 int peek2 = pq.remove();
-                System.out.println("peek1 = " + peek1 + " " + peek2 + "result 2 = " + (peek1 - peek2));
-                pq.add(peek1 - peek2);
+
+                if(peek1==peek2)
+                    continue;
+               // System.out.println("peek1 = " + peek1 + " " + peek2 + "result 2 = " + (peek1 - peek2));
+               else  pq.add(peek1 - peek2);
 
             }
 
