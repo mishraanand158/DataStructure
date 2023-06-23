@@ -5,6 +5,10 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
+/**
+ * time complexity is O(n) + O(2E)
+ */
+
 class BfsGFG {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,7 +26,7 @@ class BfsGFG {
                 adj.get(u).add(v);
                 // adj.get(v).add(u);
             }
-            Solution obj = new Solution();
+            Solution1 obj = new Solution1();
             ArrayList<Integer> ans = obj.bfsOfGraph(V, adj);
             for (int i = 0; i < ans.size(); i++)
                 System.out.print(ans.get(i) + " ");
@@ -34,7 +38,7 @@ class BfsGFG {
 // } Driver Code Ends
 
 
-class Solution {
+class Solution1 {
     // Function to return Breadth First Traversal of given graph.
     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
