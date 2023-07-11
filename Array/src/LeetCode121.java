@@ -24,35 +24,26 @@ public class LeetCode121 {
      */
     public static void main(String[] args) {
         LeetCode121.Solution s1 = new LeetCode121.Solution();
-        int[] arr = {7,6,4,3,1};
+        //  2,1,2,0,1   ;
+        int[] arr = {7, 1, 5, 3, 6, 4};
         s1.maxProfit(arr);
     }
 
     static class Solution {
         public int maxProfit(int[] prices) {
 
-            int left = 0;
-            int right = prices.length - 1;
-            int min = prices[left];
-            int max = prices[right];
+            int profit = 0;
+            int min = prices[0];
 
-            while (left < right) {
+            for (int i = 1; i < prices.length; i++) {
 
-                if (prices[left] < min) {
-                    min = prices[left];
-                    left++;
-                } else if (prices[right] > max) {
-                    max = prices[right];
-                    right--;
-                } else {
-                    left++;
-                    right--;
+                if (min > prices[i]) {
+                    min = prices[i];
                 }
-
-
+                profit = Math.max(prices[i] - min, profit);
             }
-            System.out.println(max - min > -1 ? max - min : 0);
-            return max - min > -1 ? max - min : 0;
+            
+            return profit;
         }
 
     }
