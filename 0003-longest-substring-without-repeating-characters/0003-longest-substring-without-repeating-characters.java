@@ -11,6 +11,8 @@ class Solution {
 	int end = 0;
 	int maxLength = 0;
 	int start = 0;
+       
+    // "pwwkew"    
 	while(end<s.length())
 	{
 		if(distinctvalue.add(s.charAt(end)))
