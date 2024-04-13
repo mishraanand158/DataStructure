@@ -1,10 +1,9 @@
 class Solution {
-    public boolean isPalindrome(String str) {
+    public boolean isPalindrome(String s) {
         
-        if (str ==null) {
+        if (s  ==null) {
             return false;
-        }
-        String s = str.toLowerCase();
+        } 
         int start = 0 ;
         int end = s.length()-1;
         boolean res = true ;
